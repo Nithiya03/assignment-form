@@ -40,7 +40,8 @@ back2.onclick = function () {
 next3.onclick = function () {
         step3.style.left = "-450px";
         step4.style.left = "40px";
-        backbtn3.style.color = "#6f5ba7";
+        backbtn3.style.background = "#6f5ba7";
+        backbtn3.style.color = "white";
     
     }
 
@@ -195,7 +196,8 @@ function changePage1() {
     next1.onclick = function () {
         step1.style.left = "-450px";
         step2.style.left = "40px";
-        backbtn1.style.color = "#6f5ba7";
+        backbtn1.style.background = "#6f5ba7";
+        backbtn1.style.color = "white";
     }
     }
     else{
@@ -209,7 +211,7 @@ var phoneNo = document.getElementById("phoneNo");
 var getValue = document.getElementById('state');
 
 var numericFormat = /^[6-9]\d{9}$/;
-
+var dateformat = /^(0[1-9]|[12][0-9]|3[01])[ \/\.-](0[1-9]|1[012])[\/\.-](19|20|)\d\d$/; 
 var pageTwoCheck1 = 0;
 var pageTwoCheck2 = 0;
 var pageTwoCheck3 = 0;
@@ -220,10 +222,14 @@ function validateAge() {
         document.getElementById("dob").style.border = "2px solid red";
 
         pageTwoCheck1 = 0;
-
+    }
+    else if (dateformat.test(dob.value) == false) {
+        document.getElementById("age").innerHTML = "Invalid Date Of Birth";
+        document.getElementById("dob").style.border = "2px solid red";
+        pageTwoCheck3 = 0;
+        return false;
     }
     else if (calculateAge() >= 18 && calculateAge() <= 60) {
-        //document.getElementById("age").innerHTML="Your age is "+calculateAge()+" .You are eligible";
         document.getElementById("age").innerHTML = "<span style='color: green;'>Your age is " + calculateAge() + " .You are eligible</span>";
         document.getElementById("dob").style.border = "2px solid green";
 
@@ -316,7 +322,8 @@ function changePage2() {
     next2.onclick = function () {
         step2.style.left = "-450px";
         step3.style.left = "40px";
-        backbtn2.style.color = "#6f5ba7";
+        backbtn2.style.background = "#6f5ba7";
+        backbtn2.style.color = "white";
 
     }
      }
@@ -328,14 +335,32 @@ function changePage2() {
         alert("Please fill all the required details to move to the next step");
     }
 }
+function validateOccupation() {
 
+    if(document.getElementById('no').checked == true ) {   
+        document.getElementById("experience").disabled = true;
+    } 
+    if (document.getElementById('yes').checked == true ){  
+        document.getElementById("experience").disabled = false;  
+    } 
+}
+function validateExperience(){
+    const exp = document.getElementById("experience").value;
+    if(exp < (calculateAge()-18)){
+        document.getElementById("expErr").innerHTML = " ";
+        document.getElementById("experience").style.border = "2px solid green";
+    }else{
+        document.getElementById("expErr").innerHTML = "Invalid Experience";
+        document.getElementById("experience").style.border = "2px solid red";
+    }
+}
 var grade = document.getElementById('grade');
 var yop = document.getElementById('yop');
 
 var pageFourCheck1 = 0;
 var pageFourCheck2 = 0;
 
-var yopFormat =  /^(0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+var yopFormat =  /^(0[1-9]|1[012])[\/\-](19[5-9]\d|20[0-3]\d|2030)$/;//1950 - 2030
 
 function validateGrade()
 {
@@ -370,7 +395,8 @@ function changePage4() {
         next4.onclick = function () {
             step4.style.left = "-450px";
             step5.style.left = "40px";
-            backbtn4.style.color = "#6f5ba7";
+            backbtn4.style.background = "#6f5ba7";
+            backbtn4.style.color = "white";
         }
     }
     else if(pageFourCheck1==0)   
@@ -398,7 +424,8 @@ function changePage5(){
 
             step5.style.left = "-450px";
             step6.style.left = "40px";
-            backbtn5.style.color = "#6f5ba7";
+            backbtn5.style.background = "#6f5ba7";
+            backbtn5.style.color = "white";
         }
     }
 
