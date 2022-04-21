@@ -27,7 +27,7 @@
             <label for="male">Male</label>
             <input type="radio" value="female" name="gender">
             <label for="female">Female</label>
-            <textarea placeholder="Address" rows="1"></textarea>
+            <textarea placeholder="Address" rows="1"></textarea><br>
             <label for="state">Choose your State:</label>
             <input list="states" name="state" id="state" onblur="validateState()">
             <datalist id="states">
@@ -56,11 +56,11 @@
         <form id="step3">
             <h3>Work</h3><br>
             <label>Occupation:</label>
-            <input type="radio" name="occupation" value="no" checked>
+            <input type="radio" name="occupation" id="no" value="no" onblur="validateOccupation()">
             <label for="no">No</label>
-            <input type="radio" name="occupation" value="yes">
+            <input type="radio" name="occupation" id="yes" value="yes" onblur="validateOccupation()">
             <label for="yes">Yes</label><br><br><br>
-            <input type="text" placeholder="Overall years of experience">
+            <input type="number" placeholder="Overall years of experience"  id="experience" onblur="validateExperience()"><div id="expErr"></div>
             <div class="btn">
                 <button type="button" id="back2">Back</button>
                 <button type="button" id="next3">Next</button>
@@ -72,14 +72,14 @@
             <label for="grade">Graduation:</label>
             <input name="grade" id="grade" list="grades" onblur="validateGrade()">
                 <datalist id="grades">
-                    <option value="sslc">
-                    <option value="hsc">
-                    <option value="diplomo">
-                    <option value="be">
-                    <option value="btech">
-                    <option value="bsc">
-                    <option value="mba">
-                    <option value="ma">
+                    <option value="SSLC">
+                    <option value="HSC">
+                    <option value="DIPLOMO">
+                    <option value="BE">
+                    <option value="BTech">
+                    <option value="BSC">
+                    <option value="MBA">
+                    <option value="MA">
                 </datalist>
             <br><br><br>
             <input type="text" id="yop" placeholder="Year of passing:mm/yyyy" onblur="validateYOP()"><div id="yopErr"></div>
